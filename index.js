@@ -55,6 +55,6 @@ module.exports = (moduleName, dist = "./") => {
     .join("\n");
   require("fs").writeFileSync(
     require("path").resolve(dist, `${moduleName}.d.ts`),
-    dts
+    `declare module "${moduleName}" {\n\n${dts}\n\n}`
   );
 };
