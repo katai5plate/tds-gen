@@ -8,3 +8,7 @@ d.tsを生成する
 yarn add katai5plate/tds-gen
 node -e "require('tds-gen')('<module_name>', '<dist>')"
 ```
+
+## 既知のバグ
+
+- class があるとバグる
