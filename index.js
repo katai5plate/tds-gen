@@ -34,7 +34,6 @@ module.exports = (moduleName, dist = "./") => {
           return `export const ${k}: [${v.join(", ")}];`;
         }
         // return `export interface ${k} ${JSON.stringify(v)};`;
-        console.log(Object.entries(JSON.parse(stringify(v))));
         return `export const ${k}: {};\n${Object.entries(
           JSON.parse(stringify(v))
         )
