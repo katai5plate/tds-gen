@@ -44,7 +44,7 @@ module.exports = (moduleName, dist = "./") => {
         return [
           isCamel(k)
             ? `export const ${k}: React.Component<any, any, any>;`
-            : `export const ${k}: function;`,
+            : `export const ${k}: Function;`,
           ...v.split("\n").map((x, i) => {
             // if (i === 0) return `// export const ${k} = ${x}`;
             return `// ${x}`;
