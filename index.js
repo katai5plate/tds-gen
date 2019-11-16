@@ -26,10 +26,6 @@ module.exports = (moduleName, dist = "./") => {
     x.charAt(0) === x.charAt(0).toUpperCase() &&
     x !== x.toUpperCase() &&
     !x.match(/_/);
-  const getFunctionArgs = x => {
-    const m = x.match(/function .*?\((.*?)\)\s*?\{/);
-    return !m ? [] : m[1].split(",").map(y => y.trim());
-  };
   const dts = Object.entries(JSON.parse(ast))
     .map(([k, v]) => {
       const type = typeof v;
@@ -48,13 +44,7 @@ module.exports = (moduleName, dist = "./") => {
         return [
           isCamel(k)
             ? `export const ${k}: React.ComponentType<any>;`
-            : `export function ${k}(${getFunctionArgs(v)
-                .map((x, i, a) =>
-                  a.length === 1 && a[0] === ""
-                    ? ""
-                    : `${x}?: any${i === a.length - 1 ? "" : ", "}`
-                )
-                .join("")}): any;`,
+            : `export const ${k}: Function;`,
           ...v.split("\n").map((x, i) => {
             // if (i === 0) return `// export const ${k} = ${x}`;
             return `// ${x}`;
