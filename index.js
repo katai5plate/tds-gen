@@ -43,7 +43,7 @@ module.exports = (moduleName, dist = "./") => {
       if (isFunction(v))
         return [
           isCamel(k)
-            ? `export const ${k}: React.ComponentType<{}>;`
+            ? `export const ${k}: React.ComponentType<any>;`
             : `export const ${k}: Function;`,
           ...v.split("\n").map((x, i) => {
             // if (i === 0) return `// export const ${k} = ${x}`;
